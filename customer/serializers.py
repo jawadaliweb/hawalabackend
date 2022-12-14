@@ -1,4 +1,7 @@
 from rest_framework import serializers
+
+from djoser.serializers import UserSerializer
+
 from .models import Customer
 from accounts.models import *
 
@@ -10,3 +13,8 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         fields = ['id','name','address','phone','amount','receive','payment']
         
+
+
+class MyUserSerializer(UserSerializer):
+    class Meta(UserSerializer.Meta):
+        fields = ['id', 'first_name']

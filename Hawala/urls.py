@@ -15,7 +15,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path as url
 from django.conf.urls.static import static
 from django.conf import settings
 # from . import views
@@ -23,6 +23,8 @@ urlpatterns = [
     
     path('admin/', admin.site.urls),
     path('api/', include('main.urls')),
+    url(r'^auth/', include('djoser.urls')),
+    url(r'^auth/', include('djoser.urls.jwt')),
     path('__debug__/', include('debug_toolbar.urls')),
 
 ]
